@@ -1,7 +1,11 @@
-const db = require('./index');
-const {sequelize, Sequelize} = db
+const {Sequelize} = require("sequelize");
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, null, {
+  host : process.env.DB_HOST,
+  dialect : 'mysql'
+})
 
-const userModel = sequelize.define('Users', {
+
+const userModel = sequelize.define('User', {
     id : {
         type : Sequelize.DataTypes.INTEGER,
         primaryKey : true,
@@ -25,11 +29,6 @@ const userModel = sequelize.define('Users', {
       type : Sequelize.DataTypes.STRING,
       allowNull : true
     },
-    role : {
-      type : Sequelize.DataTypes.STRING,
-      allowNull : false,
-      defaultValue : "client"
-    }
-}, {freezeTableName : true});
+});
 
 module.exports = userModel;
