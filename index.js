@@ -12,6 +12,6 @@ const corsOptions = {
     "allowedHeaders" : ['Content-Type', 'Authorization'],
 };
 
-app.use('/api/v1', cors(corsOptions), parser.json(), parser.urlencoded({extended : true}));
+app.use('/api/v1', cors(corsOptions), parser.json(), parser.urlencoded({extended : true}), require('./routes/user.route'));
 
 app.listen(port, () => {console.log(`server run on port ${port}`)});
