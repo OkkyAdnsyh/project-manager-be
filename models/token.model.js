@@ -1,5 +1,5 @@
 const {Sequelize} = require("sequelize");
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, null, {
   host : process.env.DB_HOST,
   dialect : 'mysql'
 })
@@ -12,7 +12,7 @@ const tokenModel = sequelize.define('Token', {
       autoIncrement : true
     },
     userId : {
-      type : Sequelize.DataTypes.UUID,
+      type : Sequelize.DataTypes.STRING,
     },
     accessToken : {
       type : Sequelize.DataTypes.STRING
@@ -25,6 +25,9 @@ const tokenModel = sequelize.define('Token', {
       type : Sequelize.DataTypes.STRING,
       allowNull : false,
       defaultValue : "client"
+    },
+    expiryDate : {
+      type : Sequelize.DataTypes.DATE
     }
 });
 

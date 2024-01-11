@@ -7,16 +7,10 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, nu
 
 const userModel = sequelize.define('User', {
     id : {
-        type : Sequelize.DataTypes.INTEGER,
+        type : Sequelize.DataTypes.UUID,
         primaryKey : true,
-        allowNull : false,
-        autoIncrement : true
+        defaultValue : Sequelize.DataTypes.UUIDV4
       },
-    uuid : {
-      type : Sequelize.DataTypes.UUID,
-      allowNull : false,
-      defaultValue : Sequelize.DataTypes.UUIDV4
-    },
     username : {
       type : Sequelize.DataTypes.STRING,
       allowNull : true

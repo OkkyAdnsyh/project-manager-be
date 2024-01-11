@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    registerUser
+    registerUser,
+    userloginByCredentials
 } = require("../controllers/user.controller");
 
 const registValidator = [
@@ -12,7 +13,15 @@ const registValidator = [
     check('password').notEmpty().escape()
 ]
 
+const loginValidator = [
+    check('email').notEmpty().trim().isEmail().escape(),
+    check('password').notEmpty().escape()
+]
+
 // register user route
-router.post('/user', registValidator, registerUser);
+router.post('/user-register', registValidator, registerUser);
+
+// user login by credentials
+router.post('/user-login', loginValidator, userloginByCredentials);
 
 module.exports = router;

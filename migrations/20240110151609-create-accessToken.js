@@ -16,7 +16,7 @@ module.exports = {
         autoIncrement : true
       },
       userId : {
-        type : Sequelize.DataTypes.UUID,
+        type : Sequelize.DataTypes.STRING,
       },
       accessToken : {
         type : Sequelize.DataTypes.STRING
@@ -29,6 +29,9 @@ module.exports = {
         type : Sequelize.DataTypes.STRING,
         allowNull : false,
         defaultValue : "client"
+      },
+      expiryDate : {
+        type : Sequelize.DataTypes.DATE
       },
       createdAt : {
         type : Sequelize.DataTypes.DATE,
